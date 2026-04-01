@@ -3,40 +3,103 @@ import './Navbar.css';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
+
+  const close = () => setOpen(false);
+
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-      <div className="container navbar-content">
-        <div className="logo">
-          <span className="logo-symbol">S</span>
-          <span className="logo-text">Seema<span>Cafe</span></span>
-        </div>
-        
-        <ul className="nav-links">
-          <li><a href="#menu">Our Menu</a></li>
-          <li><a href="#about">The Story</a></li>
-          <li><a href="#reviews">Guest Love</a></li>
-          <li><a href="#location">Find Us</a></li>
-        </ul>
+    <>
+      <header className={`site-header ${scrolled ? 'site-header--scrolled' : ''}`} id="top">
+        <nav className="navbar container" aria-label="Primary">
+          <a href="#top" className="brand" onClick={close} aria-label="Seema Café home">
+            <span className="brand__mark" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M6 10c0-3.5 2.5-6 6-6s6 2.5 6 6v2c0 2-1.5 3.5-3.5 3.5H14"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                />
+                <path d="M9 18h6M12 15v6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+              </svg>
+            </span>
+            <span className="brand__text">
+              Seema<span className="brand__accent">Café</span>
+            </span>
+          </a>
 
-        <div className="nav-actions">
-          <button className="btn btn-primary">Order Now</button>
-        </div>
+          <ul className={`nav-links ${open ? 'nav-links--open' : ''}`}>
+            <li>
+              <a href="#top" onClick={close}>
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="#menu" onClick={close}>
+                Menu
+              </a>
+            </li>
+            <li>
+              <a href="#events" onClick={close}>
+                Events
+              </a>
+            </li>
+            <li className="nav-links__mobile-only">
+              <a href="#about" onClick={close}>
+                About
+              </a>
+            </li>
+            <li className="nav-links__mobile-only">
+              <a href="#reviews" onClick={close}>
+                Reviews
+              </a>
+            </li>
+            <li className="nav-links__mobile-only">
+              <a href="#location" onClick={close}>
+                Contact
+              </a>
+            </li>
+          </ul>
 
-        <button className="mobile-toggle">
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </nav>
+          <div className="nav-actions">
+            <a className="btn btn-primary nav-cta" href="https://share.google/dvb0f7H5otQ1T3Ica" target="_blank" rel="noreferrer">
+              Book a table
+            </a>
+          </div>
+
+          <button
+            type="button"
+            className={`nav-toggle ${open ? 'nav-toggle--open' : ''}`}
+            aria-expanded={open}
+            aria-controls="mobile-panel"
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span className="visually-hidden">Toggle menu</span>
+            <span className="nav-toggle__bar" aria-hidden="true" />
+            <span className="nav-toggle__bar" aria-hidden="true" />
+          </button>
+        </nav>
+      </header>
+      <div
+        id="mobile-panel"
+        className={`nav-backdrop ${open ? 'nav-backdrop--visible' : ''}`}
+        aria-hidden={!open}
+        onClick={close}
+      />
+    </>
   );
 };
 

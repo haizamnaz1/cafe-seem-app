@@ -1,9 +1,13 @@
 import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import FeaturedCategories from './components/FeaturedCategories';
-import MenuGrid from './components/MenuGrid';
+import TravelerFavorites from './components/TravelerFavorites';
+import Differentiators from './components/Differentiators';
+import CuratedSelections from './components/CuratedSelections';
+import About from './components/About';
+import EventsStrip from './components/EventsStrip';
 import Testimonials from './components/Testimonials';
+import PreFooter from './components/PreFooter';
 import Footer from './components/Footer';
 import './App.css';
 
@@ -11,11 +15,11 @@ function App() {
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+      rootMargin: '0px 0px -50px 0px',
     };
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
           observer.unobserve(entry.target);
@@ -23,7 +27,7 @@ function App() {
       });
     }, observerOptions);
 
-    document.querySelectorAll('.reveal').forEach(el => {
+    document.querySelectorAll('.reveal').forEach((el) => {
       observer.observe(el);
     });
 
@@ -35,9 +39,13 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <FeaturedCategories />
-        <MenuGrid />
+        <TravelerFavorites />
+        <Differentiators />
+        <CuratedSelections />
+        <About />
+        <EventsStrip />
         <Testimonials />
+        <PreFooter />
       </main>
       <Footer />
     </div>
