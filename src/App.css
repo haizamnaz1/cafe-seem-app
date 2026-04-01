@@ -1,0 +1,48 @@
+.app {
+  width: 100%;
+}
+
+main {
+  width: 100%;
+}
+
+/* Scroll Animation Helper */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Specific spacing for sections to feel premium */
+section {
+  position: relative;
+  z-index: 5;
+}
+
+/* Floating Action Button (Utility for Travelers) */
+.mobile-utility-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: var(--surface-color);
+  padding: 1rem;
+  z-index: 2000;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.1);
+  justify-content: space-around;
+  gap: 1rem;
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 768px) {
+  .mobile-utility-bar {
+    display: flex;
+  }
+}
