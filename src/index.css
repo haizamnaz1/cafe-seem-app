@@ -50,6 +50,10 @@ html {
 body {
   font-family: var(--font-body);
   background-color: var(--bg-page);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(184, 146, 74, 0.03) 0, transparent 50%), 
+    radial-gradient(at 50% 0%, rgba(15, 61, 54, 0.03) 0, transparent 50%), 
+    radial-gradient(at 100% 0%, rgba(184, 146, 74, 0.03) 0, transparent 50%);
   color: var(--ink);
   line-height: 1.65;
   overflow-x: hidden;
