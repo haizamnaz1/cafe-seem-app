@@ -87,8 +87,7 @@ section {
 }
 
 .text-gradient {
-  background: linear-gradient(120deg, var(--forest-2) 0%, var(--gold-deep) 50%, var(--terracotta) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--gold-deep);
+  font-style: italic;
+  font-weight: 500;
 }
