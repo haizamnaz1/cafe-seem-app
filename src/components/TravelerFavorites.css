@@ -4,38 +4,37 @@
 }
 
 .favorites__head {
-  max-width: 40rem;
+  max-width: 42rem;
   margin-bottom: var(--space-lg);
 }
 
 .favorites__grid {
-  list-style: none;
-  margin: 0;
-  padding: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-sm);
+  gap: var(--space-md);
+  margin-top: var(--space-md);
 }
 
 .fav-card {
   background: var(--bg-elevated);
   border-radius: var(--radius-md);
-  border: 1px solid var(--line);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
-  transition: transform var(--transition), box-shadow var(--transition);
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+  height: 100%;
 }
 
 .fav-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   box-shadow: var(--shadow-md);
 }
 
 .fav-card__media {
   position: relative;
-  aspect-ratio: 16 / 11;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
   background: var(--bg-muted);
 }
 
@@ -43,68 +42,136 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
+  transition: transform 0.7s var(--ease-out);
 }
 
-.fav-card__dot {
+.fav-card:hover .fav-card__img {
+  transform: scale(1.1);
+}
+
+.fav-card__overlay {
   position: absolute;
-  bottom: 0.75rem;
+  top: 0.75rem;
+  left: 0.75rem;
   right: 0.75rem;
-  width: 10px;
-  height: 10px;
-  border-radius: var(--radius-full);
-  border: 2px solid var(--white);
-  box-shadow: var(--shadow-sm);
-}
-
-.fav-card__body {
-  padding: 1.1rem 1.15rem 1.25rem;
+  bottom: 0.75rem;
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
-  flex: 1;
+  justify-content: space-between;
+  pointer-events: none;
 }
 
-.fav-card__title {
-  font-size: 1.2rem;
-  color: var(--forest-deep);
-}
-
-.fav-card__desc {
-  font-size: 0.88rem;
-  color: var(--muted);
-  line-height: 1.55;
-  flex: 1;
+.fav-card__tag {
+  align-self: flex-start;
+  padding: 0.35rem 0.7rem;
+  border-radius: var(--radius-full);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .fav-card__price {
-  font-size: 0.82rem;
+  align-self: flex-end;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
   font-weight: 600;
-  color: var(--muted);
-  margin-top: 0.25rem;
+  color: var(--forest-deep);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: translateY(10px);
+  opacity: 0;
+  transition: transform 0.4s var(--ease-out), opacity 0.4s var(--ease-out);
+}
+
+.fav-card:hover .fav-card__price {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .fav-card__price span {
   font-family: var(--font-display);
-  font-size: 1.2rem;
+  font-size: 1rem;
+  margin-left: 0.15rem;
+}
+
+.fav-card__body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.5rem;
+}
+
+.fav-card__title {
+  font-size: 1.15rem;
   color: var(--forest-deep);
-  margin-left: 0.2rem;
+  line-height: 1.3;
+}
+
+.fav-card__desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.fav-card__footer {
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--line);
+}
+
+.fav-card__action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  color: var(--gold-deep);
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 0;
+  transition: gap 0.3s var(--ease-out);
+}
+
+.fav-card__action:hover {
+  gap: 0.6rem;
 }
 
 .favorites__cta {
   display: flex;
   justify-content: center;
-  margin-top: var(--space-lg);
+  margin-top: var(--space-xl);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
+  .favorites__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
   .favorites__grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 500px) {
   .favorites__grid {
     grid-template-columns: 1fr;
   }
+  
+  .fav-card__media {
+    aspect-ratio: 16 / 10;
+  }
 }
+
+
+
+
