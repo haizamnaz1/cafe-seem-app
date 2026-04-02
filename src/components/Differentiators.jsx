@@ -75,20 +75,22 @@ const Differentiators = () => {
           </p>
         </header>
 
-        <ul className="differentiators__grid">
+        <div className="differentiators__path">
           {items.map((item) => {
             const Icon = item.Icon;
             return (
-              <li key={item.title} className="diff-card reveal">
-                <div className="diff-card__icon" aria-hidden="true">
+              <div key={item.title} className="diff-item reveal">
+                <div className="diff-item__point" aria-hidden="true">
                   <Icon />
                 </div>
-                <h3 className="diff-card__title">{item.title}</h3>
-                <p className="diff-card__text">{item.text}</p>
-              </li>
+                <div className="diff-item__content">
+                  <h3 className="diff-item__title">{item.title}</h3>
+                  <p className="diff-item__text">{item.text}</p>
+                </div>
+              </div>
             );
           })}
-        </ul>
+        </div>
       </div>
     </section>
   );
