@@ -13,16 +13,22 @@ const BG = {
 const CuratedSelections = () => {
   const blocks = [
     {
+      id: 'morning',
+      mood: 'Morning',
       title: 'Healthy starts',
       items: ['Buddha bowls', 'Protein toasts', 'Fresh juices', 'Light bowls for travel days'],
       img: BG.healthy,
     },
     {
+      id: 'evening',
+      mood: 'Evening',
       title: 'Dinner specials',
       items: ['Cheese kottu', 'Kebuli rice', 'Gourmet burgers', 'Hearty plates for cool nights'],
       img: BG.dinner,
     },
     {
+      id: 'drinks',
+      mood: 'Drinks',
       title: 'Refreshments',
       items: ['Mojitos', 'Bubble tea', 'Premium coffee', 'Chilled classics for the terrace'],
       img: BG.drinks,
@@ -42,29 +48,28 @@ const CuratedSelections = () => {
           </p>
         </header>
 
-        <ul className="curated__grid">
+        <div className="curated__mosaic">
           {blocks.map((b) => (
-            <li key={b.title} className="curated-card reveal">
-              <div className="curated-card__media">
+            <div key={b.id} className={`mosaic-item mosaic-item--${b.id} reveal`}>
+              <div className="mosaic-item__media">
                 <img
                   src={b.img}
-                  alt={`${b.title} — mood and dishes at Seema Café`}
-                  className="curated-card__img"
-                  width={600}
-                  height={420}
+                  alt={`${b.title} — Seema Café`}
+                  className="mosaic-item__img"
                   loading="lazy"
                 />
-                <div className="curated-card__overlay" />
-                <h3 className="curated-card__title">{b.title}</h3>
               </div>
-              <ul className="curated-card__list">
-                {b.items.map((line) => (
-                  <li key={line}>{line}</li>
-                ))}
-              </ul>
-            </li>
+              <div className="mosaic-item__glass">
+                <h3 className="mosaic-item__title">{b.title}</h3>
+                <ul className="mosaic-item__list">
+                  {b.items.map((line) => (
+                    <li key={line}>{line}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </section>
   );

@@ -20,6 +20,7 @@ const Hero = () => {
             premium coffee. <strong className="hero__strong">Halal-friendly</strong>, with vegan and vegetarian choices,
             served with spotless hygiene and genuine warmth.
           </p>
+
           <div className="hero__actions">
             <Link className="btn btn-primary" to="/menu">
               Explore menu
