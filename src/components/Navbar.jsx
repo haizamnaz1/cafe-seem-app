@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -24,7 +25,7 @@ const Navbar = () => {
     <>
       <header className={`site-header ${scrolled ? 'site-header--scrolled' : ''}`} id="top">
         <nav className="navbar container" aria-label="Primary">
-          <a href="#top" className="brand" onClick={close} aria-label="Seema Café home">
+          <Link to="/" className="brand" onClick={close} aria-label="Seema Café home">
             <span className="brand__mark" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path
@@ -39,36 +40,36 @@ const Navbar = () => {
             <span className="brand__text">
               Seema<span className="brand__accent">Café</span>
             </span>
-          </a>
+          </Link>
 
           <ul className={`nav-links ${open ? 'nav-links--open' : ''}`}>
             <li>
-              <a href="#top" onClick={close}>
+              <Link to="/" onClick={close}>
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#menu" onClick={close}>
+              <Link to="/menu" onClick={close}>
                 Menu
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#events" onClick={close}>
+              <a href="/#events" onClick={close}>
                 Events
               </a>
             </li>
             <li className="nav-links__mobile-only">
-              <a href="#about" onClick={close}>
+              <a href="/#about" onClick={close}>
                 About
               </a>
             </li>
             <li className="nav-links__mobile-only">
-              <a href="#reviews" onClick={close}>
+              <a href="/#reviews" onClick={close}>
                 Reviews
               </a>
             </li>
             <li className="nav-links__mobile-only">
-              <a href="#location" onClick={close}>
+              <a href="/#location" onClick={close}>
                 Contact
               </a>
             </li>
