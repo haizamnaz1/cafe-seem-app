@@ -1,146 +1,238 @@
 import React from 'react';
 import './menu.css';
-import menuImage1 from './assets/Menu.png';
-import menuBg from './assets/Menu3.png';
 
 const Menu = () => {
-  // Single slide narrative lines
-  const lines = [
-    "Discover the art of Sri Lankan hospitality.",
-    "A symphony of spices in every single bite.",
-    "Experience flavors that tell our unique story."
+
+  // Professional Menu Data from Cafe Seema with Images - Extended
+  const menuData = [
+    {
+      category: "Pasta",
+      items: [
+        { 
+          id: "p1",
+          name: "Chicken Pasta", 
+          price: "900–1200", 
+          description: "Creamy or tomato-based pasta with tender chicken",
+          image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=400&q=80"
+        },
+        { 
+          id: "p2",
+          name: "Vegetable Pasta", 
+          price: "800–1000", 
+          description: "Mixed vegetables pasta with aromatic herbs",
+          image: "https://images.unsplash.com/photo-1473093295203-cad00df16e50?auto=format&fit=crop&w=400&q=80"
+        },
+        { 
+          id: "p3",
+          name: "Prawns Pasta", 
+          price: "1100–1400", 
+          description: "Succulent prawns pasta in delicate sauce",
+          image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=400&q=80"
+        },
+        { 
+          id: "p4",
+          name: "Garlic Butter Pasta", 
+          price: "750–950", 
+          description: "Silky pasta tossed in aromatic garlic butter",
+          image: "https://images.unsplash.com/photo-1645112411341-6c4ee32510d8?auto=format&fit=crop&w=400&q=80"
+        }
+      ]
+    },
+    {
+      category: "Burgers",
+      items: [
+        { 
+          id: "b1",
+          name: "Cheese Chicken Burger", 
+          price: "700–900", 
+          description: "Crispy chicken burger with melted cheese",
+          image: "https://images.unsplash.com/photo-1562547256-b4b7b6b7b2b4?auto=format&fit=crop&w=400&q=80"
+        },
+        { 
+          id: "b2",
+          name: "Chicken Burger", 
+          price: "600–800", 
+          description: "Classic grilled chicken burger with fresh toppings",
+          image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80"
+        },
+        { 
+          id: "b3",
+          name: "Beef Burger", 
+          price: "850–1050", 
+          description: "Juicy beef patty with crispy bacon and cheddar",
+          image: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
+        },
+        { 
+          id: "b4",
+          name: "Veggie Burger", 
+          price: "650–850", 
+          description: "Plant-based patty with avocado and fresh greens",
+          image: "https://images.unsplash.com/photo-1520072959219-c595dc870360?auto=format&fit=crop&w=400&q=80"
+        }
+      ]
+    },
+    {
+      category: "Fried Rice",
+      items: [
+        { 
+          id: "f1",
+          name: "Chicken Fried Rice", 
+          price: "900–1200", 
+          description: "Fragrant rice stir-fried with chicken and veggies",
+          image: "https://images.unsplash.com/photo-1645112411341-6c4ee32510d8?auto=format&fit=crop&w=400&q=80"
+        },
+        { 
+          id: "f2",
+          name: "Prawns Fried Rice", 
+          price: "1100–1400", 
+          description: "Premium fried rice with succulent prawns",
+          image: "https://images.unsplash.com/photo-1609501676725-7186f017a4b0?auto=format&fit=crop&w=400&q=80"
+        },
+        { 
+          id: "f3",
+          name: "Vegetable Fried Rice", 
+          price: "750–950", 
+          description: "Colorful mixed vegetables with aromatic seasonings",
+          image: "https://images.unsplash.com/photo-1555661781-0bff8c896bc7?auto=format&fit=crop&w=400&q=80"
+        },
+        { 
+          id: "f4",
+          name: "Egg Fried Rice", 
+          price: "700–900", 
+          description: "Classic fried rice with fluffy scrambled eggs",
+          image: "https://images.unsplash.com/photo-1609501676725-7186f017a4b0?auto=format&fit=crop&w=400&q=80"
+        }
+      ]
+    },
+    {
+      category: "Kottu",
+      items: [
+        { 
+          id: "k1",
+          name: "Chicken Kottu", 
+          price: "800–1200", 
+          description: "Sri Lankan chopped roti with spiced chicken",
+          image: "https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=400&q=80"
+        },
+        { 
+          id: "k2",
+          name: "Cheese Kottu", 
+          price: "900–1300", 
+          description: "Kottu with melted cheese and mixed vegetables",
+          image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=400&q=80"
+        },
+        { 
+          id: "k3",
+          name: "Beef Kottu", 
+          price: "950–1350", 
+          description: "Spiced beef kottu with onions and peppers",
+          image: "https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=400&q=80"
+        },
+        { 
+          id: "k4",
+          name: "Vegetable Kottu", 
+          price: "700–1000", 
+          description: "Vegetarian kottu with seasonal fresh vegetables",
+          image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80"
+        }
+      ]
+    },
+    {
+      category: "Sides",
+      items: [
+        { 
+          id: "s1",
+          name: "French Fries", 
+          price: "400–600", 
+          description: "Crispy golden fries with seasoned salt",
+          image: "https://images.unsplash.com/photo-1585238341710-4dd0e06a3c6b?auto=format&fit=crop&w=400&q=80"
+        },
+        { 
+          id: "s2",
+          name: "Cheese Fries", 
+          price: "600–800", 
+          description: "French fries topped with melted cheese",
+          image: "https://images.unsplash.com/photo-1630384478776-1be6e96e3795?auto=format&fit=crop&w=400&q=80"
+        },
+        { 
+          id: "s3",
+          name: "Spicy Wings", 
+          price: "850–1100", 
+          description: "Crispy fried wings with tangy spicy sauce",
+          image: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=400&q=80"
+        },
+        { 
+          id: "s4",
+          name: "Onion Rings", 
+          price: "500–700", 
+          description: "Golden fried onion rings with ranch dip",
+          image: "https://images.unsplash.com/photo-1639024471694-fca29a246b10?auto=format&fit=crop&w=400&q=80"
+        }
+      ]
+    }
   ];
 
-  // Menu Category Cards Data
-  const categories = [
-    { title: "Signature Coffee", img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=400&q=80" },
-    { title: "Buddha Bowls", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=400&q=80" },
-    { title: "Sri Lankan Kottu", img: "https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=400&q=80" },
-    { title: "Kebuli Rice", img: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=400&q=80" },
-    { title: "Healthy Juices", img: "https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=400&q=80" }
-  ];
-
-  // Beverage Cards Data
-  const beverages = [
-    { title: "Premium Espresso", price: "Rs. 850", img: "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&w=400&q=80" },
-    { title: "Ceylon Spiced Tea", price: "Rs. 450", img: "https://images.unsplash.com/photo-1594631252845-29fc45865157?auto=format&fit=crop&w=400&q=80" },
-    { title: "Tropical Smoothie", price: "Rs. 950", img: "https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=400&q=80" },
-    { title: "Iced Caramel Latte", price: "Rs. 1100", img: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=400&q=80" }
-  ];
-
-  // Burger Cards Data
-  const burgers = [
-    { title: "Classic Seema Beef", price: "Rs. 1450", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80" },
-    { title: "Crispy Chicken Zinger", price: "Rs. 1250", img: "https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?auto=format&fit=crop&w=400&q=80" },
-    { title: "Spicy Veggie Delight", price: "Rs. 950", img: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80" },
-    { title: "Double Cheese Monster", price: "Rs. 1850", img: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=400&q=80" }
-  ];
+  const handleAddToCart = (name, price) => {
+    alert(`${name} added to cart! Price: Rs. ${price}`);
+  };
 
   return (
-    <div className="menu-page dark-theme">
-      {/* Fixed Background - Now using Menu3.png */}
-      <div className="menu-parallax-bg" style={{ backgroundImage: `url(${menuBg})` }}></div>
+    <div className="menu-page professional-theme">
+      {/* Hero Section */}
+      <div className="menu-hero">
+        <div className="menu-hero__content">
+          <div className="menu-hero__badge">EST. 2019 • KANDY, SRI LANKA</div>
+          <h1 className="menu-hero__title">
+            The Heart of <span className="menu-hero__accent">Flavors</span> in Kandy.
+          </h1>
+          <p className="menu-hero__description">
+            A traveler-favorite spot offering a perfect blend of authentic Sri Lankan taste and healthy international options.
+          </p>
+          <div className="menu-hero__cta">
+            <a href="/" className="menu-hero__btn menu-hero__btn--primary" style={{textDecoration: 'none', display: 'inline-block'}}>
+              Back to Home
+            </a>
+          </div>
+        </div>
+      </div>
 
-      {/* 1st Section: Sticky Hero */}
-      <section className="menu-sticky-hero">
-        <div className="menu-image-frame">
-          <div className="animation-wrapper">
-            <div className="dark-overlay"></div>
-            <img src={menuImage1} alt="Hero" className="menu-image animated-zoom" />
-            <div className="menu-caption-v2">
-              {lines.map((line, idx) => (
-                <p key={idx} className={`animated-sentence ${idx === lines.length - 1 ? 'last-sentence' : ''}`}
-                   style={{ animationDelay: `${idx * 3}s` }}>
-                  {line}
-                </p>
+      {/* Menu Sections */}
+      <div className="menu-container">
+        {menuData.map((section, idx) => (
+          <section key={idx} className="menu-section">
+            <div className="section-header-professional">
+              <h2 className="section-title-professional">{section.category}</h2>
+              <div className="section-line"></div>
+            </div>
+            
+            <div className="items-grid">
+              {section.items.map((item) => (
+                <div key={item.id} className="grid-item-card">
+                  {/* Circular Image Container */}
+                  <div className="image-circle">
+                    <img src={item.image} alt={item.name} className="item-image" />
+                  </div>
+
+                  {/* Item Info */}
+                  <h3 className="grid-item-name">{item.name}</h3>
+                  <p className="grid-item-description">{item.description}</p>
+
+                  {/* Price */}
+                  <div className="grid-item-price">Rs. {item.price}</div>
+
+                  {/* Add to Cart Button */}
+                  <button 
+                    className="add-to-cart-btn"
+                    onClick={() => handleAddToCart(item.name, item.price)}
+                  >
+                    ADD TO CART
+                  </button>
+                </div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 2nd Section: Details */}
-      <section className="menu-details-section">
-        <div className="container">
-          <div className="details-grid">
-            <div className="details-item">
-              <h3>House Specialties</h3>
-              <p>Experience our chef's hand-picked selections, from traditional Cheese Kottu to our aromatic Kebuli Rice.</p>
-            </div>
-            <div className="details-item">
-              <h3>Fresh & Organic</h3>
-              <p>We source 90% of our ingredients from local farmers in the Kandy hills, ensuring peak freshness.</p>
-            </div>
-            <div className="details-item">
-              <h3>Dietary Friendly</h3>
-              <p>Extensive Vegan, Vegetarian, and Halal-certified options crafted with the same Seema passion.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3rd Section: Categories (White) */}
-      <section className="menu-white-section">
-        <div className="container">
-          <header className="section-header">
-            <h1 className="section-title">Menu Categories</h1>
-            <div className="section-underline"></div>
-          </header>
-          <div className="menu-cards-carousel">
-            {categories.map((cat, index) => (
-              <div key={index} className="menu-category-card">
-                <div className="card-img-wrapper"><img src={cat.img} alt={cat.title} /></div>
-                <div className="card-info"><h4>{cat.title}</h4></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 4th Section: Parallax Spacer */}
-      <section className="menu-parallax-spacer"></section>
-
-      {/* 5th Section: Beverages (Dark) */}
-      <section className="menu-beverages-section">
-        <div className="container">
-          <header className="beverages-header">
-            <h2 className="beverages-title">Beverages</h2>
-            <div className="beverages-underline"></div>
-          </header>
-          <div className="beverages-grid">
-            {beverages.map((bev, index) => (
-              <div key={index} className="beverage-card">
-                <div className="bev-img-wrapper"><img src={bev.img} alt={bev.title} /></div>
-                <div className="bev-info">
-                  <h4>{bev.title}</h4>
-                  <span className="bev-price">{bev.price}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 6th Section: Burgers (Dark) */}
-      <section className="menu-burgers-section">
-        <div className="container">
-          <header className="beverages-header">
-            <h2 className="beverages-title">Burgers</h2>
-            <div className="beverages-underline"></div>
-          </header>
-          <div className="beverages-grid">
-            {burgers.map((burger, index) => (
-              <div key={index} className="beverage-card">
-                <div className="bev-img-wrapper"><img src={burger.img} alt={burger.title} /></div>
-                <div className="bev-info">
-                  <h4>{burger.title}</h4>
-                  <span className="bev-price">{burger.price}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+          </section>
+        ))}
+      </div>
     </div>
   );
 }
