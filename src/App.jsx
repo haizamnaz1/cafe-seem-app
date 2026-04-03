@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Menu from './menu';
 import TravelerFavorites from './components/TravelerFavorites';
 import Differentiators from './components/Differentiators';
 import CuratedSelections from './components/CuratedSelections';
@@ -11,7 +13,7 @@ import PreFooter from './components/PreFooter';
 import Footer from './components/Footer';
 import './App.css';
 
-function App() {
+const Home = () => {
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
@@ -35,17 +37,34 @@ function App() {
   }, []);
 
   return (
+    <>
+      <Hero />
+      <TravelerFavorites />
+      <Differentiators />
+      <CuratedSelections />
+      <About />
+      <EventsStrip />
+      <Testimonials />
+      <PreFooter />
+    </>
+  );
+};
+
+function App() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return (
     <div className="app">
       <Navbar />
       <main>
-        <Hero />
-        <TravelerFavorites />
-        <Differentiators />
-        <CuratedSelections />
-        <About />
-        <EventsStrip />
-        <Testimonials />
-        <PreFooter />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/menu" element={<Menu />} />
+        </Routes>
       </main>
       <Footer />
     </div>
