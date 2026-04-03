@@ -1,0 +1,390 @@
+/* Menu Page Styles - Dark Theme Parent */
+.menu-page.dark-theme {
+  min-height: 100vh;
+  background-color: #0a0a0a;
+  color: #ffffff;
+  width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* 
+   HEADER TRANSPARENCY
+*/
+:has(.menu-page.dark-theme) .site-header {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+:has(.menu-page.dark-theme) .brand__text,
+:has(.menu-page.dark-theme) .nav-links a {
+  color: #ffffff !important;
+}
+
+/* PARALLAX FIXED BACKGROUND */
+.menu-parallax-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 0; 
+}
+
+/* 1st Section: STICKY HERO */
+.menu-sticky-hero {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 5; 
+  background: #000;
+  overflow: hidden;
+}
+
+.menu-image-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 5;
+}
+
+.animation-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.animated-zoom {
+  animation: slowZoom 12s cubic-bezier(0.1, 0.4, 0.4, 1) forwards;
+}
+
+@keyframes slowZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.15); }
+}
+
+.menu-caption-v2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 90%;
+  max-width: 900px;
+  height: 200px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.animated-sentence {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 5vw, 2.8rem);
+  font-weight: 500;
+  color: #ffffff;
+  opacity: 0;
+  margin: 0;
+  text-shadow: 0 4px 20px rgba(0,0,0,1);
+  width: 100%;
+  animation: fadeInOut 3s ease-in-out forwards;
+}
+
+.animated-sentence.last-sentence {
+  animation: fadeInStay 3s ease-in-out forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(20px); filter: blur(8px); }
+  15%, 85% { opacity: 1; transform: translateY(0); filter: blur(0); }
+  100% { opacity: 0; transform: translateY(-20px); filter: blur(8px); }
+}
+
+@keyframes fadeInStay {
+  0% { opacity: 0; transform: translateY(20px); filter: blur(8px); }
+  15%, 100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* Opaque Cover Sections (Must have z-index > background) */
+.menu-details-section,
+.menu-white-section,
+.menu-beverages-section,
+.menu-burgers-section {
+  position: relative;
+  z-index: 10; 
+}
+
+/* 2nd Section: Details */
+.menu-details-section {
+  padding: 8rem 0;
+  background-color: #0d0d0d;
+  box-shadow: 0 -20px 50px rgba(0,0,0,0.9);
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
+  text-align: center;
+}
+
+.details-item h3 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--gold-soft);
+  margin-bottom: 1rem;
+}
+
+.details-item p {
+  font-family: var(--font-body);
+  color: #a0a0a0;
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+/* 3rd Section: Categories (White) */
+.menu-white-section {
+  padding: 8rem 0;
+  background-color: #ffffff;
+  color: var(--forest-deep);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 4.5rem);
+  font-weight: 700;
+  color: var(--forest-deep);
+  margin-bottom: 0.5rem;
+}
+
+.section-underline {
+  width: 140px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto;
+}
+
+.menu-cards-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 4rem 0 6rem;
+}
+
+.menu-category-card {
+  width: 180px;
+  height: 260px;
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  border: 1px solid #f0f0f0;
+  flex-shrink: 0;
+}
+
+.card-img-wrapper {
+  width: 100%;
+  height: 70%;
+  overflow: hidden;
+}
+
+.card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-info {
+  padding: 1rem;
+  text-align: center;
+}
+
+.card-info h4 {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--forest-deep);
+}
+
+.menu-category-card:nth-child(1) { transform: translateY(40px) rotate(-10deg); }
+.menu-category-card:nth-child(2) { transform: translateY(10px) rotate(-5deg); }
+.menu-category-card:nth-child(3) { transform: translateY(0px) rotate(0deg); }
+.menu-category-card:nth-child(4) { transform: translateY(10px) rotate(5deg); }
+.menu-category-card:nth-child(5) { transform: translateY(40px) rotate(10deg); }
+
+.menu-category-card:hover {
+  transform: translateY(-20px) rotate(0deg) scale(1.1) !important;
+  z-index: 50;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+}
+
+/* 4th Section: PARALLAX SPACER */
+.menu-parallax-spacer {
+  height: 350px;
+  background: transparent;
+  position: relative;
+  z-index: 1; 
+}
+
+/* 5th Section: BEVERAGES (Custom Color #fbf9f6) */
+.menu-beverages-section {
+  padding: 8rem 0;
+  background-color: #fbf9f6; 
+  color: var(--forest-deep);
+  box-shadow: 0 -20px 50px rgba(0,0,0,0.05);
+}
+
+.menu-beverages-section .beverages-title {
+  color: var(--forest-deep);
+}
+
+.menu-beverages-section .beverage-card {
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+}
+
+.menu-beverages-section .bev-info h4 {
+  color: var(--forest-deep);
+}
+
+/* 6th Section: BURGERS (Dark) */
+.menu-burgers-section {
+  padding: 8rem 0;
+  background-color: #0a0a0a;
+  box-shadow: 0 -20px 50px rgba(0,0,0,0.9);
+}
+
+.beverages-header {
+  text-align: left;
+  margin-bottom: 4rem;
+}
+
+.beverages-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.beverages-underline {
+  width: 100px;
+  height: 4px;
+  background: var(--gold);
+  border-radius: 2px;
+}
+
+.beverages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+.beverage-card {
+  background: #141414;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.beverage-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--gold);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.bev-img-wrapper {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.bev-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bev-info {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bev-info h4 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin: 0;
+}
+
+.bev-price {
+  font-family: var(--font-body);
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* FOOTER FIX (SCROLL OVER) */
+.footer {
+  position: relative;
+  z-index: 10 !important;
+}
+
+@media (max-width: 900px) {
+  .menu-cards-carousel {
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 2rem 1rem 4rem;
+  }
+  .menu-category-card { transform: none !important; }
+}
+
+@media (max-width: 768px) {
+  .animated-sentence { font-size: 1.5rem; }
+  .menu-details-section, 
+  .menu-white-section, 
+  .menu-beverages-section,
+  .menu-burgers-section { padding: 5rem 0; }
+  .beverages-header { text-align: center; }
+  .beverages-underline { margin: 0 auto; }
+}

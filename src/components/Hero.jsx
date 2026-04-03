@@ -1,5 +1,5 @@
 import React from 'react';
-import { RatingRingBlock } from './RatingGraphic';
+import { Link } from 'react-router-dom';
 import './Hero.css';
 
 const COFFEE_IMG =
@@ -22,9 +22,9 @@ const Hero = () => {
           </p>
 
           <div className="hero__actions">
-            <a className="btn btn-primary" href="#menu">
+            <Link className="btn btn-primary" to="/menu">
               Explore menu
-            </a>
+            </Link>
             <a className="btn btn-ghost" href="https://share.google/dvb0f7H5otQ1T3Ica" target="_blank" rel="noreferrer">
               Order · Reserve
             </a>
