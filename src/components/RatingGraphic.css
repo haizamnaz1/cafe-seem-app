@@ -1,0 +1,163 @@
+/* Shared star row */
+.rating-stars {
+  display: flex;
+  gap: 0.18rem;
+}
+
+.rating-stars--lg .rating-stars__item {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.rating-stars--md .rating-stars__item {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.rating-stars--sm .rating-stars__item {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+.rating-stars__item {
+  position: relative;
+  display: inline-flex;
+  overflow: hidden;
+}
+
+.rating-stars__icon {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s var(--ease-out);
+}
+
+.rating-stars__icon--empty {
+  fill: #dddcd8;
+}
+
+.rating-stars__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  overflow: hidden;
+}
+
+.rating-stars__icon--filled {
+  fill: var(--gold);
+}
+
+/* Radial rating block */
+.rating-ring-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  text-align: center;
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.rating-ring-block__graphic {
+  position: relative;
+  width: 8.25rem;
+  height: 8.25rem;
+  display: grid;
+  place-items: center;
+}
+
+.rating-ring-block__svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.rating-ring-block__track,
+.rating-ring-block__progress {
+  fill: none;
+  stroke-width: 6;
+}
+
+.rating-ring-block__track {
+  stroke: rgba(18, 24, 22, 0.1);
+}
+
+.rating-ring-block__progress {
+  stroke: var(--gold);
+  stroke-linecap: round;
+}
+
+.rating-ring-block__score {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  color: var(--forest-deep);
+  pointer-events: none;
+}
+
+.rating-ring-block__number {
+  font-family: var(--font-display);
+  font-size: 2.35rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.rating-ring-block__total {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  opacity: 0.5;
+  font-weight: 500;
+  align-self: center;
+}
+
+.rating-ring-block__meta {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin: 0;
+}
+
+/* Hero: smaller ring, tighter type */
+.rating-ring-block--hero .rating-ring-block__graphic {
+  width: 6.5rem;
+  height: 6.5rem;
+}
+
+.rating-ring-block--hero .rating-ring-block__number {
+  font-size: 1.85rem;
+}
+
+.rating-ring-block--hero .rating-ring-block__total {
+  font-size: 0.8rem;
+}
+
+.rating-ring-block--hero .rating-ring-block__meta {
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+}
+
+.rating-ring-block--hero {
+  gap: 0.4rem;
+}
+
+@media (max-width: 768px) {
+  .rating-ring-block--section .rating-ring-block__graphic {
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rating-stars__icon {
+    transition: none;
+  }
+}
