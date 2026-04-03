@@ -3,6 +3,8 @@ import './About.css';
 
 const INTERIOR_IMG =
   'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80';
+const DETAIL_IMG =
+  'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80';
 
 const About = () => {
   return (

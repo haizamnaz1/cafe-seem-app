@@ -48,6 +48,24 @@
   font-weight: 600;
 }
 
+.hero__rating-link {
+  display: inline-flex;
+  margin: 0.5rem 0 var(--space-md);
+  text-decoration: none;
+  color: inherit;
+  border-radius: var(--radius-md);
+  transition: transform 0.25s var(--ease-out), opacity 0.25s var(--ease-out);
+}
+
+.hero__rating-link:hover {
+  transform: translateY(-2px);
+}
+
+.hero__rating-link:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
 .hero__actions {
   display: flex;
   flex-wrap: wrap;

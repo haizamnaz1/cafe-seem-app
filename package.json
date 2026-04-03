@@ -10,9 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "framer-motion": "^12.38.0",
     "react": "^19.2.4",
+<<<<<<< HEAD
     "react-dom": "^19.2.4",
     "react-router-dom": "^7.14.0"
+=======
+    "react-countup": "^6.5.3",
+    "react-dom": "^19.2.4"
+>>>>>>> 8b78e3c13832cea47cbba87f07c5e78e7602c7be
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",

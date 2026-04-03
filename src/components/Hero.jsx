@@ -1,4 +1,5 @@
 import React from 'react';
+import { RatingRingBlock } from './RatingGraphic';
 import './Hero.css';
 
 const COFFEE_IMG =
@@ -19,6 +20,7 @@ const Hero = () => {
             premium coffee. <strong className="hero__strong">Halal-friendly</strong>, with vegan and vegetarian choices,
             served with spotless hygiene and genuine warmth.
           </p>
+
           <div className="hero__actions">
             <a className="btn btn-primary" href="#menu">
               Explore menu
