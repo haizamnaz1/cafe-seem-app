@@ -66,7 +66,7 @@ const Differentiators = () => {
   return (
     <section className="differentiators" aria-labelledby="diff-heading">
       <div className="container">
-        <header className="differentiators__head reveal">
+        <header className="differentiators__head">
           <h2 id="diff-heading" className="section-title">
             We&apos;re <em>different</em> by design
           </h2>
@@ -79,7 +79,7 @@ const Differentiators = () => {
           {items.map((item) => {
             const Icon = item.Icon;
             return (
-              <div key={item.title} className="diff-item reveal">
+              <div key={item.title} className="diff-item">
                 <div className="diff-item__point" aria-hidden="true">
                   <Icon />
                 </div>

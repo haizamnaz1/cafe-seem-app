@@ -10,7 +10,7 @@ const About = () => {
   return (
     <section className="about" id="about" aria-labelledby="about-heading">
       <div className="container about__grid">
-        <div className="about__media reveal">
+        <div className="about__media">
           <div className="about__frame">
             <img
               src={INTERIOR_IMG}
@@ -27,7 +27,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className="about__content reveal">
+        <div className="about__content">
           <p className="section-eyebrow">About Seema Café</p>
           <h2 id="about-heading" className="section-title">
             A family table in the <em>heart of Kandy</em>

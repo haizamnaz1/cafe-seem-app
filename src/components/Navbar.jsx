@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -20,6 +21,40 @@ const Navbar = () => {
   }, [open]);
 
   const close = () => setOpen(false);
+
+  // Handle navigation with hash links
+  const handleNavClick = (e, path) => {
+    e.preventDefault();
+    close();
+    
+    // Small delay to let sidebar close animation complete
+    setTimeout(() => {
+      if (path.includes('#')) {
+        const [route, hash] = path.split('#');
+        
+        // Navigate to route first if needed
+        if (route && window.location.pathname !== route) {
+          navigate(route);
+        }
+        
+        // Scroll to section after navigation
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          if (element) {
+            const headerOffset = 80;
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }, 100);
+      } else {
+        navigate(path);
+      }
+    }, 300);
+  };
 
   return (
     <>
@@ -44,32 +79,37 @@ const Navbar = () => {
 
           <ul className={`nav-links ${open ? 'nav-links--open' : ''}`}>
             <li>
-              <Link to="/" onClick={close}>
+              <a href="/" onClick={(e) => handleNavClick(e, '/')}>
                 Home
-              </Link>
+              </a>
             </li>
             <li>
-              <Link to="/menu" onClick={close}>
+              <a href="/menu" onClick={(e) => handleNavClick(e, '/menu')}>
                 Menu
-              </Link>
+              </a>
             </li>
             <li>
-              <a href="/#events" onClick={close}>
+              <a href="/#events" onClick={(e) => handleNavClick(e, '/#events')}>
                 Events
               </a>
             </li>
-            <li className="nav-links__mobile-only">
-              <a href="/#about" onClick={close}>
+            <li>
+              <a href="/#map" onClick={(e) => handleNavClick(e, '/#map')}>
+                Map
+              </a>
+            </li>
+            <li>
+              <a href="/#about" onClick={(e) => handleNavClick(e, '/#about')}>
                 About
               </a>
             </li>
             <li className="nav-links__mobile-only">
-              <a href="/#reviews" onClick={close}>
+              <a href="/#reviews" onClick={(e) => handleNavClick(e, '/#reviews')}>
                 Reviews
               </a>
             </li>
             <li className="nav-links__mobile-only">
-              <a href="/#location" onClick={close}>
+              <a href="/#location" onClick={(e) => handleNavClick(e, '/#location')}>
                 Contact
               </a>
             </li>

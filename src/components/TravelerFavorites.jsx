@@ -1,5 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import './TravelerFavorites.css';
+import {
+  fadeUpVariants,
+  staggerContainerVariants,
+  staggerItemVariants,
+  hoverScale,
+  hoverLift,
+  viewportSettings
+} from './animations';
 
 const IMG = {
   bowl: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=700&h=1000&q=80',
@@ -50,48 +60,18 @@ const TravelerFavorites = () => {
       accent: 'var(--forest-2)',
       tag: 'Fresh',
     },
-    {
-      id: 5,
-      name: 'Seafood Pasta',
-      desc: 'Handmade pasta and fresh catch from the coast.',
-      price: '1,800',
-      img: IMG.pasta,
-      accent: 'var(--gold-deep)',
-      tag: 'Premium',
-    },
-    {
-      id: 6,
-      name: 'Signature Tea',
-      desc: 'Cool, playful sips — perfect for sunset vibes.',
-      price: '600',
-      img: IMG.tea,
-      accent: 'var(--forest)',
-      tag: 'Refreshing',
-    },
-    {
-      id: 7,
-      name: 'Choc Mousse',
-      desc: 'Dark chocolate with local Kandy coffee hint.',
-      price: '750',
-      img: IMG.dessert,
-      accent: 'var(--terracotta)',
-      tag: 'Sweet',
-    },
-    {
-      id: 8,
-      name: 'The Affogato',
-      desc: 'Espresso over artisan vanilla bean gelato.',
-      price: '550',
-      img: IMG.coffee,
-      accent: 'var(--forest-deep)',
-      tag: 'Coffee',
-    },
   ];
 
   return (
     <section className="favorites" id="menu" aria-labelledby="favorites-heading">
       <div className="container">
-        <header className="favorites__head reveal">
+        <motion.header
+          className="favorites__head"
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportSettings}
+          variants={fadeUpVariants}
+        >
           <p className="section-eyebrow">Popular now</p>
           <h2 id="favorites-heading" className="section-title">
             Traveler <em>favorites</em>
@@ -99,20 +79,37 @@ const TravelerFavorites = () => {
           <p className="section-lead">
             A snapshot of what regulars and visitors order again and again — full menu in house with daily specials.
           </p>
-        </header>
+        </motion.header>
 
-        <div className="favorites__grid">
+        <motion.div
+          className="favorites__grid"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainerVariants}
+        >
           {items.map((item) => (
-            <div key={item.id} className="fav-card reveal">
+            <motion.div
+              key={item.id}
+              className="fav-card"
+              variants={staggerItemVariants}
+              whileHover={hoverScale}
+            >
               <div className="fav-card__media">
-                <img
+                <motion.img
                   src={item.img}
                   alt={`${item.name} — Seema Café Kandy`}
                   className="fav-card__img"
                   loading="lazy"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
                 />
                 <div className="fav-card__overlay">
-                  {item.tag && <span className="fav-card__tag" style={{ background: item.accent }}>{item.tag}</span>}
+                  {item.tag && (
+                    <span className="fav-card__tag" style={{ background: item.accent }}>
+                      {item.tag}
+                    </span>
+                  )}
                   <p className="fav-card__price">
                     LKR <span>{item.price}</span>
                   </p>
@@ -120,23 +117,34 @@ const TravelerFavorites = () => {
               </div>
               <div className="fav-card__body">
                 <h3 className="fav-card__title">{item.name}</h3>
-                <p className="fav-card__desc">{item.desc}</p>
+                <div className="fav-card__divider"></div>
                 <div className="fav-card__footer">
-                   <button className="fav-card__action" aria-label={`View details for ${item.name}`}>
-                     Details 
-                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                   </button>
+                   <span className="fav-card__price">Rs. <span>{item.price}</span></span>
+                   <motion.div whileHover={hoverLift}>
+                     <Link to="/menu" className="fav-card__action" aria-label={`View details for ${item.name}`}>
+                       Details 
+                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                     </Link>
+                   </motion.div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="favorites__cta reveal">
-          <a className="btn btn-primary" href="#menu-full">
-            Explore Full Menu
-          </a>
-        </div>
+        <motion.div
+          className="favorites__cta"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.4 }}
+        >
+          <motion.div whileHover={hoverLift}>
+            <Link className="btn btn-primary" to="/menu">
+              Explore Full Menu
+            </Link>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

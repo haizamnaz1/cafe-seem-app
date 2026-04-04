@@ -55,7 +55,7 @@ const Testimonials = () => {
     <section className="testimonials" id="reviews" aria-labelledby="reviews-heading">
       <div className="container">
         <header className="testimonials__head">
-          <div className="testimonials__intro reveal">
+          <div className="testimonials__intro">
             <p className="section-eyebrow">Experience</p>
             <h2 id="reviews-heading" className="section-title">
               What our customers <em>say</em>
