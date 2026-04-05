@@ -4,7 +4,7 @@ import './EventsStrip.css';
 const EventsStrip = () => {
   return (
     <section className="events-strip" id="events" aria-labelledby="events-heading">
-      <div className="container events-strip__inner reveal">
+      <div className="container events-strip__inner">
         <div className="events-strip__text">
           <h2 id="events-heading" className="events-strip__title">
             Gatherings &amp; occasions

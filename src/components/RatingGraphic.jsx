@@ -106,9 +106,10 @@ export const RatingRingBlock = ({
     return (
       <motion.div
         className={rootClass}
-        initial={{ opacity: 0, scale: 0.96 }}
+        initial={{ opacity: 0.9, scale: 0.98 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.4 }}
         {...a11yProps}
       >
         {inner}

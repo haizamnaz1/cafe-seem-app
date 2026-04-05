@@ -1,5 +1,13 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import './CuratedSelections.css';
+import {
+  fadeUpVariants,
+  staggerContainerVariants,
+  staggerItemVariants,
+  hoverScale,
+  viewportSettings
+} from './animations';
 
 const BG = {
   healthy:
@@ -38,7 +46,13 @@ const CuratedSelections = () => {
   return (
     <section className="curated" id="curated" aria-labelledby="curated-heading">
       <div className="container">
-        <header className="curated__head reveal">
+        <motion.header
+          className="curated__head"
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportSettings}
+          variants={fadeUpVariants}
+        >
           <p className="section-eyebrow">Our specialty</p>
           <h2 id="curated-heading" className="section-title">
             Curated <em>selections</em>
@@ -46,17 +60,31 @@ const CuratedSelections = () => {
           <p className="section-lead">
             Three moods — morning clarity, evening comfort, and drinks that feel like a reward. Ask staff for what&apos;s in season.
           </p>
-        </header>
+        </motion.header>
 
-        <div className="curated__mosaic">
+        <motion.div
+          className="curated__mosaic"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainerVariants}
+        >
           {blocks.map((b) => (
-            <div key={b.id} className={`mosaic-item mosaic-item--${b.id} reveal`}>
+            <motion.div
+              key={b.id}
+              className={`mosaic-item mosaic-item--${b.id}`}
+              variants={staggerItemVariants}
+              whileHover={hoverScale}
+            >
               <div className="mosaic-item__media">
-                <img
+                <span className="mosaic-item__mood">{b.mood}</span>
+                <motion.img
                   src={b.img}
                   alt={`${b.title} — Seema Café`}
                   className="mosaic-item__img"
                   loading="lazy"
+                  whileHover={{ scale: 1.08 }}
+                  transition={{ duration: 0.4 }}
                 />
               </div>
               <div className="mosaic-item__glass">
@@ -67,9 +95,9 @@ const CuratedSelections = () => {
                   ))}
                 </ul>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

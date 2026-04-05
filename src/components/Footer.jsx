@@ -1,19 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
 const Footer = () => {
   return (
     <footer className="footer" id="location">
       <div className="container footer__top">
-        <div className="footer__brand reveal">
-          <a href="#top" className="footer__logo">
+        <div className="footer__brand">
+          <Link to="/" className="footer__logo">
             <span className="footer__mark" aria-hidden="true">
               S
             </span>
             <span className="footer__wordmark">
               Seema<span className="footer__wordmark-accent">Café</span>
             </span>
-          </a>
+          </Link>
           <p className="footer__tagline">
             Established in 2019 — authentic Sri Lankan flavors, healthy international plates, and hospitality rooted in Kandy.
           </p>
@@ -27,31 +28,31 @@ const Footer = () => {
           </div>
         </div>
 
-        <nav className="footer__nav reveal" aria-label="Quick links">
+        <nav className="footer__nav" aria-label="Quick links">
           <h2 className="footer__heading">Quick links</h2>
           <ul>
             <li>
-              <a href="#top">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a href="#menu">Menu</a>
+              <Link to="/menu">Menu</Link>
             </li>
             <li>
-              <a href="#events">Events</a>
+              <Link to="/#events">Events</Link>
             </li>
             <li>
-              <a href="#about">About</a>
+              <Link to="/#about">About</Link>
             </li>
             <li>
-              <a href="#reviews">Reviews</a>
+              <Link to="/#reviews">Reviews</Link>
             </li>
             <li>
-              <a href="#location">Contact</a>
+              <Link to="/#location">Contact</Link>
             </li>
           </ul>
         </nav>
 
-        <div className="footer__visit reveal">
+        <div className="footer__visit">
           <h2 className="footer__heading">Contact</h2>
           <address className="footer__address">
             No 129/2/4, DS Senanayake Veediya

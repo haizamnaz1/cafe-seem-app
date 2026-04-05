@@ -1,58 +1,90 @@
+/* ==========================================
+   CURATED SELECTIONS - Editorial Magazine Style
+   ========================================== */
 .curated {
   position: relative;
-  padding: calc(var(--space-xl) + 2rem) 0;
+  padding: calc(var(--space-xl) + 3rem) 0;
   background: var(--bg-page);
-  background-image: 
-    radial-gradient(at 100% 0%, rgba(184, 146, 74, 0.04) 0, transparent 40%),
-    radial-gradient(at 0% 100%, rgba(15, 61, 54, 0.04) 0, transparent 40%);
+  background-image:
+    radial-gradient(at 100% 0%, rgba(184, 146, 74, 0.06) 0, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(15, 61, 54, 0.05) 0, transparent 45%);
   overflow: hidden;
 }
 
+/* Editorial Header */
 .curated__head {
-  max-width: 42rem;
-  margin-bottom: 7rem;
+  max-width: 52rem;
+  margin: 0 auto 5rem;
+  text-align: center;
 }
 
+.curated__head .section-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  margin-bottom: 1.5rem;
+}
+
+.curated__head .section-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+}
+
+.curated__head .section-title em {
+  font-style: italic;
+  color: var(--gold-deep);
+}
+
+.curated__head .section-lead {
+  font-size: 1.15rem;
+  max-width: 36ch;
+  margin: 0 auto;
+}
+
+/* Editorial Mosaic Layout */
 .curated__mosaic {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 5rem;
-  padding-top: 2rem;
+  align-items: flex-end;
+  gap: 2rem;
+  padding: 2rem 0 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+/* Editorial Card */
 .mosaic-item {
   position: relative;
-  flex: 0 0 320px;
-  max-width: 340px;
-  transition: transform var(--transition);
+  flex: 0 0 340px;
+  max-width: 360px;
+  transition: transform 0.6s var(--ease-out);
   z-index: 2;
 }
 
-/* Staggered Offsets */
+/* Editorial Offsets - Magazine stagger */
 .mosaic-item--morning {
-  transform: translateY(0);
+  transform: translateY(-20px);
 }
 
 .mosaic-item--evening {
-  transform: translateY(5rem);
+  transform: translateY(40px);
 }
 
 .mosaic-item--drinks {
-  transform: translateY(-2rem);
+  transform: translateY(-40px);
 }
 
 .mosaic-item:hover {
-  transform: translateY(-12px) scale(1.02);
+  transform: translateY(-20px) scale(1.03);
   z-index: 10;
 }
 
-/* Floating Media */
+/* Editorial Image - Full bleed */
 .mosaic-item__media {
   position: relative;
   z-index: 1;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 4;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-md);
@@ -67,35 +99,55 @@
 }
 
 .mosaic-item:hover .mosaic-item__img {
-  transform: scale(1.08);
+  transform: scale(1.12);
 }
 
-/* Overlapping Glass Tile */
+/* Mood Label - Top left */
+.mosaic-item__mood {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.4rem 1rem;
+  background: rgba(15, 61, 54, 0.9);
+  backdrop-filter: blur(8px);
+  color: var(--white);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+  z-index: 3;
+}
+
+/* Editorial Glass Card - Large, bottom right */
 .mosaic-item__glass {
   position: absolute;
-  bottom: -2.5rem;
-  right: -1.5rem;
+  bottom: -2rem;
+  right: -2rem;
   z-index: 2;
-  width: 260px;
-  padding: 1.5rem 1.75rem;
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  width: 280px;
+  padding: 2rem 2.25rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   box-shadow: var(--shadow-lg);
-  transition: transform 0.45s var(--ease-out);
+  transition: transform 0.5s var(--ease-out);
 }
 
 .mosaic-item:hover .mosaic-item__glass {
-  transform: translateY(-12px);
+  transform: translateY(-10px);
 }
 
+/* Editorial Typography */
 .mosaic-item__title {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.75rem;
+  font-weight: 600;
   color: var(--forest-deep);
-  margin-bottom: 0.85rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.15;
 }
 
 .mosaic-item__list {
@@ -105,47 +157,123 @@
 }
 
 .mosaic-item__list li {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   color: var(--muted);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
   position: relative;
-  padding-left: 1rem;
+  padding-left: 1.25rem;
+  line-height: 1.5;
 }
 
 .mosaic-item__list li::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 0.55em;
-  width: 4px;
-  height: 4px;
+  top: 0.65em;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: var(--gold);
 }
 
-/* Mobile Adjustments */
+/* ==========================================
+   MOBILE - Horizontal Scroll Editorial
+   ========================================== */
 @media (max-width: 1024px) {
   .curated__mosaic {
-    gap: 6rem;
-    padding-bottom: 4rem;
+    gap: 1.5rem;
+  }
+
+  .mosaic-item {
+    flex: 0 0 300px;
+  }
+
+  .mosaic-item__glass {
+    width: 240px;
+    padding: 1.5rem 1.75rem;
+    right: -1rem;
+    bottom: -1.5rem;
+  }
+
+  .mosaic-item__title {
+    font-size: 1.5rem;
   }
 }
 
 @media (max-width: 768px) {
-  .mosaic-item {
-    transform: translateY(0) !important;
-    max-width: none;
-    flex: 0 0 100%;
+  .curated {
+    padding: var(--space-xl) 0;
   }
 
-  .mosaic-item__bg-title {
-    font-size: 6rem;
-    left: -1rem;
+  .curated__head {
+    margin-bottom: 3rem;
+    padding: 0 var(--space-sm);
+  }
+
+  .curated__head .section-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  /* Mobile Horizontal Scroll Carousel */
+  .curated__mosaic {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 1rem;
+    padding: 1rem var(--space-sm) 3rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .curated__mosaic::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mosaic-item {
+    flex: 0 0 85vw;
+    max-width: 340px;
+    scroll-snap-align: center;
+    transform: translateY(0) !important;
+  }
+
+  .mosaic-item__media {
+    aspect-ratio: 4 / 5;
   }
 
   .mosaic-item__glass {
-    width: min(100%, 280px);
-    right: 1rem;
-    bottom: -1.5rem;
+    position: relative;
+    bottom: auto;
+    right: auto;
+    width: 90%;
+    margin: -3rem auto 0;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  .mosaic-item__title {
+    font-size: 1.35rem;
+    margin-bottom: 1rem;
+  }
+
+  .mosaic-item__list li {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Scroll indicator */
+  .curated__mosaic::after {
+    content: '→';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-left: 0.5rem;
+    color: var(--gold-deep);
+    font-size: 1.5rem;
+    opacity: 0.6;
+    flex-shrink: 0;
   }
 }
